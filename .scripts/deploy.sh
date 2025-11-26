@@ -1,25 +1,22 @@
-name: Deploy
+#!/bin/bash
+set -e
 
-on:
-  push:
-    branches: ["master", "main"]
-  pull_request:
-    branches: ["master", "main"]
+echo "Deployment started ..."
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+# Traer últimos cambios
+echo "📥 Pulling latest changes..."
+git pull origin main  
 
-      - name: Deploy to Server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          port: ${{ secrets.PORT }}
-          key: ${{ secrets.SSHKEY }}
-          script: |
-            cd /root/projects/Deploy-Test-
-            chmod +x .scripts/deploy.sh
-            ./.scripts/deploy.sh
+# Installing Dependencies
+echo "Installing Dependencies..."
+npm install --yes
+
+# Creating a build 
+echo "Building application"
+npm run build
+
+# Copying dist to /var/www/Deploy-Test
+echo "Copying dist to /var/www/Deploy-Test"
+sudo cp -r dist/* /var/www/Deploy-Test
+
+echo "Deployment Finished!"
