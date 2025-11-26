@@ -20,6 +20,6 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
           script: |
-            cd projects/Deploy-Test-
+            cd /root/projects/Deploy-Test-
             chmod +x .scripts/deploy.sh
             ./.scripts/deploy.sh
