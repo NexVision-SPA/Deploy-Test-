@@ -5,7 +5,7 @@
   <section id="hero" class="hero-section">
     <div class="hero-content">
       <h1 class="headline">Innovating the <span class="highlight">Future</span></h1>
-      <p class="subheadline">Advanced Technology Solutions for Tomorrow's World - IA2</p>
+      <p class="subheadline">Advanced Technology Solutions for Tomorrow's World</p>
       <div class="cta-group">
         <button class="btn primary">Get Started</button>
         <button class="btn secondary">Learn More</button>
